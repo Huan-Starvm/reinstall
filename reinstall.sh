@@ -63,7 +63,7 @@ Usage: $reinstall_____ anolis      7|8|23
                        rocky       8|9|10
                        oracle      8|9|10
                        almalinux   8|9|10
-                       centos      8|9|10
+                       centos      7|8|9|10
                        fnos        1
                        nixos       25.11
                        fedora      42|43
@@ -1730,9 +1730,14 @@ Continue with DD?
             centos)
                 case $releasever in
                 7)
-                    # CentOS-7-aarch64-GenericCloud.qcow2c 是旧版本
-                    ver=-2211
-                    ci_image=$ci_mirror/$releasever/images/CentOS-$releasever-$elarch-GenericCloud$ver.qcow2c
+                    # 支持 CentOS 7.9 (2009)
+                    # 自动化架构：x86_64 使用你提供的 2009 版本，其他架构（如 arm）沿用原脚本逻辑
+                    if [ "$elarch" = x86_64 ]; then
+                        ci_image=$ci_mirror/7/images/CentOS-7-x86_64-GenericCloud-2009.qcow2
+                    else
+                        ver=-2211
+                        ci_image=$ci_mirror/$releasever/images/CentOS-$releasever-$elarch-GenericCloud$ver.qcow2c
+                    fi
                     ;;
                 8)
                     # 新增 CentOS 8 Stream 支持
