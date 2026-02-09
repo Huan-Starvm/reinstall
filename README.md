@@ -97,7 +97,7 @@
 curl -O https://raw.githubusercontent.com/Huan-Starvm/reinstall/refs/heads/main/reinstall.sh || wget -O ${_##*/} $_
 ```
 
-国内服务器：
+国内服务器(暂不支持CentOS 7.9与8 Stream 等待重写)：
 
 ```bash
 curl -O https://cnb.cool/bin456789/reinstall/-/git/raw/main/reinstall.sh || wget -O ${_##*/} $_
@@ -124,13 +124,13 @@ curl -O https://cnb.cool/bin456789/reinstall/-/git/raw/main/reinstall.sh || wget
 
 </details>
 
-国外服务器：
+国外服务器(暂不支持CentOS 7.9与8 Stream 等待重写)：
 
 ```batch
 certutil -urlcache -f -split https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.bat
 ```
 
-国内服务器：
+国内服务器(暂不支持CentOS 7.9与8 Stream 等待重写)：
 
 ```batch
 certutil -urlcache -f -split https://cnb.cool/bin456789/reinstall/-/git/raw/main/reinstall.bat
