@@ -1,5 +1,11 @@
 <!-- markdownlint-disable MD028 MD033 MD045 -->
 
+# 写在前面
+
+针对原有的王煎饼的脚本进行了如下改动
+
+- 增加了一键重装到CentOS Stream 8 以照顾魔方云用户
+
 # reinstall
 
 [![Codacy](https://img.shields.io/codacy/grade/dc679a17751448628fe6d8ac35e26eed?logo=Codacy&label=Codacy&style=flat-square)](https://app.codacy.com/gh/bin456789/reinstall/dashboard)
