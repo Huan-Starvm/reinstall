@@ -1940,7 +1940,7 @@ verify_os_name() {
 
     # 不要删除 centos 7
     for os in \
-        'centos      7|9|10' \
+        'centos      7|8|9|10' \
         'anolis      7|8|23' \
         'opencloudos 8|9|23' \
         'almalinux   8|9|10' \
