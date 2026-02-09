@@ -4,7 +4,7 @@
 
 针对原有的王煎饼的脚本进行了如下改动
 
-- 增加了一键重装到CentOS Stream 8 以照顾魔方云用户
+- 增加了一键重装到CentOS Stream 8 与CentOS 7.9 以照顾魔方云用户
 
 # reinstall
 
