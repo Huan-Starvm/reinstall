@@ -63,7 +63,7 @@ Usage: $reinstall_____ anolis      7|8|23
                        rocky       8|9|10
                        oracle      8|9|10
                        almalinux   8|9|10
-                       centos      9|10
+                       centos      8|9|10
                        fnos        1
                        nixos       25.11
                        fedora      42|43
@@ -1733,6 +1733,11 @@ Continue with DD?
                     # CentOS-7-aarch64-GenericCloud.qcow2c 是旧版本
                     ver=-2211
                     ci_image=$ci_mirror/$releasever/images/CentOS-$releasever-$elarch-GenericCloud$ver.qcow2c
+                    ;;
+                8)
+                    # 新增 CentOS 8 Stream 支持
+                    # 链接示例: https://cloud.centos.org/centos/8-stream/x86_64/images/CentOS-Stream-GenericCloud-8-latest.x86_64.qcow2
+                    ci_image=$ci_mirror/$releasever-stream/$elarch/images/CentOS-Stream-GenericCloud-$releasever-latest.$elarch.qcow2
                     ;;
                 *)
                     # 有 bios 和 efi 镜像
