@@ -1,6 +1,37 @@
 #!/usr/bin/env bash
 # nixos 默认的配置不会生成 /bin/bash
 # shellcheck disable=SC2086
+# --- 全局修复补丁：强制修正 CentOS 8 换源和 DNS ---
+fix_centos_repo() {
+    if [ -d "/os/etc/yum.repos.d" ]; then
+        echo "Detected /os directory, applying repo fix..."
+
+        # 2. 强制写入归档源
+        rm -rf /os/etc/yum.repos.d/*
+
+        cat <<EOF > /os/etc/yum.repos.d/CentOS-Stream-AppStream.repo
+[appstream]
+name=CentOS Stream 8 - AppStream
+baseurl=https://mirrors.aliyun.com/centos-vault/8.5.2111/AppStream/x86_64/os/
+gpgcheck=0
+enabled=1
+EOF
+        cat <<EOF > /os/etc/yum.repos.d/CentOS-Stream-BaseOS.repo
+[baseos]
+name=CentOS Stream 8 - BaseOS
+baseurl=https://mirrors.aliyun.com/centos-vault/8.5.2111/BaseOS/x86_64/os/
+gpgcheck=0
+enabled=1
+EOF
+        # 3. 预热缓存
+        chroot /os/ dnf clean all 2>/dev/null
+    fi
+}
+
+# 劫持 chroot 命令，确保在调用 dnf 前先修源
+alias chroot='fix_centos_repo; chroot'
+shopt -s expand_aliases
+# --- 补丁结束 ---
 
 set -eE
 confhome=https://raw.githubusercontent.com/bin456789/reinstall/main
